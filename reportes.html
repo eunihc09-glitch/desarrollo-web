@@ -18,6 +18,7 @@
             <a href="alertas.html"><span class="icon">&#9679;</span> Alertas</a>
             <a href="incidentes.html"><span class="icon">&#9650;</span> Incidentes</a>
             <a href="reportes.html" class="active"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="validacion.html"><span class="icon">&#10003;</span> Validación</a>
             <a href="#"><span class="icon">&#9881;</span> Configuración</a>
         </nav>
 
@@ -126,28 +127,6 @@
 
 <div class="toast" id="toast">Generando reporte...</div>
 
-<script>
-const toast = document.getElementById('toast');
-document.getElementById('generateBtn').addEventListener('click', () => {
-    toast.textContent = 'Generando reporte...';
-    toast.classList.add('show');
-
-    setTimeout(() => {
-        toast.classList.remove('show');
-
-        const tbody = document.getElementById('reportTable');
-        const row = document.createElement('tr');
-        row.innerHTML = '<td>Reporte_Ejecutivo_Junio2026_v2.pdf</td><td>Hoy</td><td><a href="#" class="download-link">Descargar &darr;</a></td>';
-        tbody.insertBefore(row, tbody.firstChild);
-
-        setTimeout(() => {
-            toast.textContent = 'Reporte generado correctamente';
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2200);
-        }, 200);
-    }, 1400);
-});
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>

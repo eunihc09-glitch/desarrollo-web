@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">CyberShield AI</div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span class="icon">&#9632;</span> Dashboard</a>
+            <a href="alertas.html"><span class="icon">&#9679;</span> Alertas</a>
+            <a href="incidentes.html"><span class="icon">&#9650;</span> Incidentes</a>
+            <a href="reportes.html"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="validacion.html" class="active"><span class="icon">&#10003;</span> Validación</a>
+            <a href="#"><span class="icon">&#9881;</span> Configuración</a>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="avatar">CM</div>
+            <div>
+                <p>Carlos Martínez</p>
+                <span>Analista de seguridad</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <div>
+                <h1>Validación dinámica</h1>
+                <p class="subtitle">Formulario final para confirmar si la validación del FrontEnd fue realizada</p>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell">&#128276;<span class="dot"></span></div>
+                <div class="avatar">CM</div>
+            </div>
+        </div>
+
+        <div class="validation-layout">
+            <div class="panel">
+                <h3>Formulario 3: Validación de módulo</h3>
+                <form id="validationForm" novalidate>
+                    <div class="input-group">
+                        <label>Módulo a validar</label>
+                        <select id="validationModule" required>
+                            <option value="">Seleccionar módulo...</option>
+                            <option value="Login">Login</option>
+                            <option value="Dashboard">Dashboard</option>
+                            <option value="Alertas">Alertas</option>
+                            <option value="Incidentes">Incidentes</option>
+                            <option value="Reportes">Reportes</option>
+                        </select>
+                    </div>
+                    <button class="btn" type="submit" style="border:none; cursor:pointer; margin-top:14px;">Realizar validación</button>
+                </form>
+                <p class="form-note">Este formulario muestra un solo mensaje de resultado para comprobar si la validación fue ejecutada correctamente.</p>
+            </div>
+
+            <div class="panel">
+                <h3>Resultado</h3>
+                <p id="validationMessage" class="single-message">Pendiente: selecciona un módulo y presiona Realizar validación.</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<div class="toast" id="toast">Validación realizada correctamente</div>
+
+<script src="app.js"></script>
+</body>
+</html>

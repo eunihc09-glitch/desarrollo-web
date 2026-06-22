@@ -18,6 +18,7 @@
             <a href="alertas.html"><span class="icon">&#9679;</span> Alertas</a>
             <a href="incidentes.html" class="active"><span class="icon">&#9650;</span> Incidentes</a>
             <a href="reportes.html"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="validacion.html"><span class="icon">&#10003;</span> Validación</a>
             <a href="#"><span class="icon">&#9881;</span> Configuración</a>
         </nav>
 
@@ -103,73 +104,63 @@
 
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
-        <h3>Nuevo incidente</h3>
+        <h3>Formulario 2: Registro de incidente</h3>
 
-        <div class="input-group">
-            <label>Tipo de incidente</label>
-            <select>
-                <option>Seleccionar...</option>
-                <option>Acceso no autorizado</option>
-                <option>Intento de phishing</option>
-                <option>Malware</option>
-                <option>Fuga de información</option>
-                <option>Otro</option>
-            </select>
-        </div>
+        <form id="incidentForm" novalidate>
+            <div class="input-group">
+                <label>Tipo de incidente</label>
+                <select id="incidentType" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Acceso no autorizado">Acceso no autorizado</option>
+                    <option value="Intento de phishing">Intento de phishing</option>
+                    <option value="Malware">Malware</option>
+                    <option value="Fuga de información">Fuga de información</option>
+                    <option value="Configuración insegura">Configuración insegura</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
 
-        <div class="input-group">
-            <label>Fecha</label>
-            <input type="date" value="2026-06-21">
-        </div>
+            <div class="input-group">
+                <label>Fecha</label>
+                <input type="date" id="incidentDate" value="2026-06-21" required>
+            </div>
 
-        <div class="input-group">
-            <label>Descripción</label>
-            <textarea rows="3" placeholder="Describe brevemente el incidente..."></textarea>
-        </div>
+            <div class="input-group">
+                <label>Severidad</label>
+                <select id="incidentSeverity" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="Baja">Baja</option>
+                </select>
+            </div>
 
-        <div class="input-group">
-            <label>Responsable</label>
-            <select>
-                <option>Seleccionar...</option>
-                <option>Carlos Martínez</option>
-                <option>Laura Ramírez</option>
-            </select>
-        </div>
+            <div class="input-group">
+                <label>Descripción</label>
+                <textarea rows="3" id="incidentDesc" minlength="10" required placeholder="Describe brevemente el incidente..."></textarea>
+            </div>
 
-        <div class="modal-actions">
-            <button class="primary" id="saveIncident">Guardar</button>
-            <button class="secondary" id="cancelModal">Cancelar</button>
-        </div>
+            <div class="input-group">
+                <label>Responsable</label>
+                <select id="incidentOwner" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Carlos Martínez">Carlos Martínez</option>
+                    <option value="Laura Ramírez">Laura Ramírez</option>
+                </select>
+            </div>
+
+            <p id="incidentError" class="login-error">Completa todos los campos. La descripción debe tener al menos 10 caracteres.</p>
+
+            <div class="modal-actions">
+                <button class="primary" id="saveIncident" type="submit">Guardar</button>
+                <button class="secondary" id="cancelModal" type="button">Cancelar</button>
+            </div>
+        </form>
     </div>
 </div>
 
 <div class="toast" id="toast">Incidente registrado correctamente</div>
 
-<script>
-const modalOverlay = document.getElementById('modalOverlay');
-const openModal = document.getElementById('openModal');
-const cancelModal = document.getElementById('cancelModal');
-const toast = document.getElementById('toast');
-
-function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2200);
-}
-
-openModal.addEventListener('click', () => modalOverlay.classList.add('open'));
-cancelModal.addEventListener('click', () => modalOverlay.classList.remove('open'));
-modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) modalOverlay.classList.remove('open'); });
-
-document.getElementById('saveIncident').addEventListener('click', () => {
-    modalOverlay.classList.remove('open');
-    showToast('Incidente registrado correctamente');
-});
-
-if(new URLSearchParams(window.location.search).get('nuevo') === '1'){
-    modalOverlay.classList.add('open');
-}
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>

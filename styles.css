@@ -382,6 +382,28 @@ footer{
     font-weight:600;
 }
 
+.login-error{
+    display:none;
+    background:rgba(255,107,107,.12);
+    border:1px solid rgba(255,107,107,.35);
+    color:#ff8a8a;
+    font-size:.85rem;
+    padding:10px 14px;
+    border-radius:8px;
+    margin-top:-6px;
+}
+
+.login-error.show{
+    display:block;
+}
+
+.demo-hint{
+    margin-top:14px;
+    font-size:.78rem;
+    color:#5e7388;
+    text-align:center;
+}
+
 /* APP SHELL */
 
 .app{
@@ -1053,4 +1075,50 @@ tbody tr.clickable:hover{
     .main{ padding:24px 18px 50px; }
     .metric-grid{ grid-template-columns:1fr 1fr; }
     .drawer{ width:100%; }
+}
+
+/* FORMULARIO DE VALIDACION */
+.validation-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    align-items:start;
+}
+
+.single-message{
+    margin-top:10px;
+    padding:18px 20px;
+    border-radius:12px;
+    background:#0f1828;
+    border:1px solid #223454;
+    color:#9fb1c6;
+    font-size:.95rem;
+}
+
+.single-message.success{
+    background:rgba(46,230,166,.08);
+    border-color:rgba(46,230,166,.45);
+    color:#2ee6a6;
+    font-weight:700;
+}
+
+.single-message.error{
+    background:rgba(255,107,107,.10);
+    border-color:rgba(255,107,107,.35);
+    color:#ff8a8a;
+    font-weight:700;
+}
+
+.form-note{
+    color:#8ea2b8;
+    font-size:.88rem;
+    margin-top:12px;
+}
+
+.modal .login-error{
+    margin:0 0 14px;
+}
+
+@media(max-width:900px){
+    .validation-layout{ grid-template-columns:1fr; }
 }

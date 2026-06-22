@@ -18,6 +18,7 @@
             <a href="alertas.html" class="active"><span class="icon">&#9679;</span> Alertas</a>
             <a href="incidentes.html"><span class="icon">&#9650;</span> Incidentes</a>
             <a href="reportes.html"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="validacion.html"><span class="icon">&#10003;</span> Validación</a>
             <a href="#"><span class="icon">&#9881;</span> Configuración</a>
         </nav>
 
@@ -143,67 +144,6 @@
 
 <div class="toast" id="toast">Alerta marcada como atendida</div>
 
-<script>
-const chips = document.querySelectorAll('.chip');
-const rows = document.querySelectorAll('#alertTable tr');
-const searchInput = document.getElementById('searchInput');
-
-function applyFilters(){
-    const activeChip = document.querySelector('.chip.active').dataset.filter;
-    const query = searchInput.value.toLowerCase();
-
-    rows.forEach(row => {
-        const matchesSev = activeChip === 'todas' || row.dataset.sev === activeChip;
-        const matchesSearch = row.textContent.toLowerCase().includes(query);
-        row.style.display = (matchesSev && matchesSearch) ? '' : 'none';
-    });
-}
-
-chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        applyFilters();
-    });
-});
-
-searchInput.addEventListener('input', applyFilters);
-
-const overlay = document.getElementById('drawerOverlay');
-const drawerBadge = document.getElementById('drawerBadge');
-const drawerDesc = document.getElementById('drawerDesc');
-const drawerRec = document.getElementById('drawerRec');
-
-rows.forEach(row => {
-    row.addEventListener('click', () => {
-        const sev = row.dataset.sev;
-        drawerBadge.className = 'badge ' + (sev === 'alta' ? 'high' : sev === 'media' ? 'med' : 'low');
-        drawerBadge.textContent = sev.charAt(0).toUpperCase() + sev.slice(1);
-        drawerDesc.textContent = row.dataset.desc;
-        drawerRec.textContent = row.dataset.rec;
-        overlay.classList.add('open');
-    });
-});
-
-document.getElementById('drawerClose').addEventListener('click', () => overlay.classList.remove('open'));
-overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.classList.remove('open'); });
-
-const toast = document.getElementById('toast');
-function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2200);
-}
-
-document.getElementById('markAttended').addEventListener('click', () => {
-    overlay.classList.remove('open');
-    showToast('Alerta marcada como atendida');
-});
-
-document.getElementById('escalate').addEventListener('click', () => {
-    window.location.href = 'incidentes.html?nuevo=1';
-});
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>

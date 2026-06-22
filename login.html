@@ -18,12 +18,13 @@
             <p>Accede a tu centro de monitoreo de ciberseguridad</p>
         </div>
 
-        <form class="login-form">
+        <form class="login-form" id="loginForm">
 
             <div class="input-group">
                 <label>Correo electrónico</label>
                 <input
                     type="email"
+                    id="emailInput"
                     placeholder="empresa@correo.com"
                     required
                 >
@@ -33,6 +34,7 @@
                 <label>Contraseña</label>
                 <input
                     type="password"
+                    id="passwordInput"
                     placeholder="********"
                     required
                 >
@@ -47,6 +49,8 @@
                 <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
 
+            <p id="loginError" class="login-error">Correo o contraseña incorrectos. Intenta de nuevo.</p>
+
             <button type="submit" class="login-btn">
                 Iniciar Sesión
             </button>
@@ -58,11 +62,13 @@
                 ¿No tienes cuenta?
                 <a href="#">Solicitar acceso</a>
             </p>
+            <p class="demo-hint">Acceso de prueba: demo@cybershield.ai / demo1234</p>
         </div>
 
     </div>
 
 </div>
 
+<script src="app.js"></script>
 </body>
 </html>
