@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">CyberShield AI</div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="active"><span class="icon">&#9632;</span> Dashboard</a>
+            <a href="alertas.html"><span class="icon">&#9679;</span> Alertas</a>
+            <a href="incidentes.html"><span class="icon">&#9650;</span> Incidentes</a>
+            <a href="reportes.html"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="#"><span class="icon">&#9881;</span> Configuración</a>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="avatar">CM</div>
+            <div>
+                <p>Carlos Martínez</p>
+                <span>Analista de seguridad</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <div>
+                <h1>Hola, Carlos</h1>
+                <p class="subtitle">Resumen de seguridad — hoy, 21 de junio de 2026</p>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell">&#128276;<span class="dot"></span></div>
+                <div class="avatar">CM</div>
+            </div>
+        </div>
+
+        <div class="metric-grid">
+            <div class="metric-card good">
+                <div class="label">Nivel de seguridad</div>
+                <div class="value">94%</div>
+            </div>
+            <div class="metric-card">
+                <div class="label">Alertas activas</div>
+                <div class="value">3</div>
+            </div>
+            <div class="metric-card">
+                <div class="label">Incidentes abiertos</div>
+                <div class="value">1</div>
+            </div>
+            <div class="metric-card">
+                <div class="label">Dispositivos monitoreados</div>
+                <div class="value">128</div>
+            </div>
+        </div>
+
+        <div class="panel-grid">
+            <div class="panel">
+                <h3>Actividad de red en tiempo real</h3>
+                <div class="chart-placeholder">
+                    <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+                        <polyline points="0,120 60,110 120,130 180,90 240,100 300,60 360,80 420,40 480,65 540,30 600,50"
+                            fill="none" stroke="#2ee6a6" stroke-width="3"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Alertas recientes</h3>
+
+                <a href="alertas.html" class="alert-row">
+                    <span class="sev-dot high"></span>
+                    Acceso no autorizado al panel admin
+                </a>
+                <a href="alertas.html" class="alert-row">
+                    <span class="sev-dot med"></span>
+                    Tráfico inusual en servidor de archivos
+                </a>
+                <a href="alertas.html" class="alert-row">
+                    <span class="sev-dot med"></span>
+                    Inicio de sesión fuera de horario laboral
+                </a>
+
+                <a href="alertas.html" class="panel-link">Ver todas las alertas &rarr;</a>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>

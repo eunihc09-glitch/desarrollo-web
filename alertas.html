@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alertas | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">CyberShield AI</div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span class="icon">&#9632;</span> Dashboard</a>
+            <a href="alertas.html" class="active"><span class="icon">&#9679;</span> Alertas</a>
+            <a href="incidentes.html"><span class="icon">&#9650;</span> Incidentes</a>
+            <a href="reportes.html"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="#"><span class="icon">&#9881;</span> Configuración</a>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="avatar">CM</div>
+            <div>
+                <p>Carlos Martínez</p>
+                <span>Analista de seguridad</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <div>
+                <h1>Alertas</h1>
+                <p class="subtitle">Revisa y atiende las alertas detectadas por el sistema</p>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell">&#128276;<span class="dot"></span></div>
+                <div class="avatar">CM</div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <button class="chip active" data-filter="todas">Todas</button>
+            <button class="chip" data-filter="alta">Alta</button>
+            <button class="chip" data-filter="media">Media</button>
+            <button class="chip" data-filter="baja">Baja</button>
+            <input type="text" class="search-input" id="searchInput" placeholder="Buscar alerta...">
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Severidad</th>
+                        <th>Descripción</th>
+                        <th>Origen</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="alertTable">
+                    <tr class="clickable" data-sev="alta"
+                        data-desc="Acceso no autorizado al panel administrativo desde una IP no reconocida."
+                        data-rec="Bloquear la IP de origen y forzar el cambio de contraseña del usuario afectado.">
+                        <td><span class="badge high">Alta</span></td>
+                        <td>Acceso no autorizado al panel admin</td>
+                        <td>192.168.1.45</td>
+                        <td>Hoy, 08:12</td>
+                        <td><span class="badge progress">Pendiente</span></td>
+                    </tr>
+                    <tr class="clickable" data-sev="media"
+                        data-desc="Se detectó un volumen de tráfico fuera de lo habitual en el servidor de archivos compartido."
+                        data-rec="Revisar los registros de acceso del servidor y validar con el responsable del área.">
+                        <td><span class="badge med">Media</span></td>
+                        <td>Tráfico inusual en servidor de archivos</td>
+                        <td>10.0.0.22</td>
+                        <td>Hoy, 07:48</td>
+                        <td><span class="badge progress">Pendiente</span></td>
+                    </tr>
+                    <tr class="clickable" data-sev="media"
+                        data-desc="Se registró un inicio de sesión fuera del horario laboral habitual del equipo de RH."
+                        data-rec="Confirmar con el usuario si la sesión fue legítima; de lo contrario, suspender el acceso.">
+                        <td><span class="badge med">Media</span></td>
+                        <td>Inicio de sesión fuera de horario laboral</td>
+                        <td>Equipo-RH02</td>
+                        <td>Ayer, 23:10</td>
+                        <td><span class="badge resolved">Atendida</span></td>
+                    </tr>
+                    <tr class="clickable" data-sev="baja"
+                        data-desc="El firmware del router principal tiene una actualización de seguridad disponible."
+                        data-rec="Programar la actualización de firmware en la próxima ventana de mantenimiento.">
+                        <td><span class="badge low">Baja</span></td>
+                        <td>Actualización de firmware pendiente</td>
+                        <td>Router-01</td>
+                        <td>Ayer, 14:02</td>
+                        <td><span class="badge resolved">Atendida</span></td>
+                    </tr>
+                    <tr class="clickable" data-sev="baja"
+                        data-desc="Se identificó un certificado SSL próximo a vencer en el sitio de soporte interno."
+                        data-rec="Renovar el certificado antes de la fecha de expiración para evitar interrupciones.">
+                        <td><span class="badge low">Baja</span></td>
+                        <td>Certificado SSL próximo a vencer</td>
+                        <td>soporte.interno</td>
+                        <td>18/06/2026</td>
+                        <td><span class="badge resolved">Atendida</span></td>
+                    </tr>
+                    <tr class="clickable" data-sev="alta"
+                        data-desc="Múltiples intentos fallidos de inicio de sesión sobre la misma cuenta en menos de 5 minutos."
+                        data-rec="Bloquear temporalmente la cuenta y notificar al usuario por un canal alterno.">
+                        <td><span class="badge high">Alta</span></td>
+                        <td>Múltiples intentos de inicio de sesión fallidos</td>
+                        <td>Cuenta: jvalencia</td>
+                        <td>17/06/2026</td>
+                        <td><span class="badge resolved">Atendida</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<div class="drawer-overlay" id="drawerOverlay">
+    <div class="drawer">
+        <button class="drawer-close" id="drawerClose">&times;</button>
+        <h3>Detalle de alerta</h3>
+        <span class="badge high" id="drawerBadge">Alta</span>
+        <p class="desc" id="drawerDesc" style="margin-top:16px;"></p>
+
+        <div class="drawer-label">Recomendación (IA)</div>
+        <p class="desc" id="drawerRec"></p>
+
+        <div class="drawer-actions">
+            <button class="primary" id="markAttended">Marcar como atendida</button>
+            <button class="secondary" id="escalate">Escalar a incidente</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast">Alerta marcada como atendida</div>
+
+<script>
+const chips = document.querySelectorAll('.chip');
+const rows = document.querySelectorAll('#alertTable tr');
+const searchInput = document.getElementById('searchInput');
+
+function applyFilters(){
+    const activeChip = document.querySelector('.chip.active').dataset.filter;
+    const query = searchInput.value.toLowerCase();
+
+    rows.forEach(row => {
+        const matchesSev = activeChip === 'todas' || row.dataset.sev === activeChip;
+        const matchesSearch = row.textContent.toLowerCase().includes(query);
+        row.style.display = (matchesSev && matchesSearch) ? '' : 'none';
+    });
+}
+
+chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        applyFilters();
+    });
+});
+
+searchInput.addEventListener('input', applyFilters);
+
+const overlay = document.getElementById('drawerOverlay');
+const drawerBadge = document.getElementById('drawerBadge');
+const drawerDesc = document.getElementById('drawerDesc');
+const drawerRec = document.getElementById('drawerRec');
+
+rows.forEach(row => {
+    row.addEventListener('click', () => {
+        const sev = row.dataset.sev;
+        drawerBadge.className = 'badge ' + (sev === 'alta' ? 'high' : sev === 'media' ? 'med' : 'low');
+        drawerBadge.textContent = sev.charAt(0).toUpperCase() + sev.slice(1);
+        drawerDesc.textContent = row.dataset.desc;
+        drawerRec.textContent = row.dataset.rec;
+        overlay.classList.add('open');
+    });
+});
+
+document.getElementById('drawerClose').addEventListener('click', () => overlay.classList.remove('open'));
+overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.classList.remove('open'); });
+
+const toast = document.getElementById('toast');
+function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+document.getElementById('markAttended').addEventListener('click', () => {
+    overlay.classList.remove('open');
+    showToast('Alerta marcada como atendida');
+});
+
+document.getElementById('escalate').addEventListener('click', () => {
+    window.location.href = 'incidentes.html?nuevo=1';
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incidentes | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">CyberShield AI</div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span class="icon">&#9632;</span> Dashboard</a>
+            <a href="alertas.html"><span class="icon">&#9679;</span> Alertas</a>
+            <a href="incidentes.html" class="active"><span class="icon">&#9650;</span> Incidentes</a>
+            <a href="reportes.html"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="#"><span class="icon">&#9881;</span> Configuración</a>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="avatar">CM</div>
+            <div>
+                <p>Carlos Martínez</p>
+                <span>Analista de seguridad</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <div>
+                <h1>Incidentes</h1>
+                <p class="subtitle">Da seguimiento a los incidentes de seguridad confirmados</p>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell">&#128276;<span class="dot"></span></div>
+                <div class="avatar">CM</div>
+            </div>
+        </div>
+
+        <div class="page-actions">
+            <button class="btn" id="openModal" style="border:none; cursor:pointer;">+ Nuevo incidente</button>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo de incidente</th>
+                        <th>Fecha</th>
+                        <th>Responsable</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="incidentTable">
+                    <tr>
+                        <td>#102</td>
+                        <td>Acceso no autorizado</td>
+                        <td>21/06/2026</td>
+                        <td>Carlos Martínez</td>
+                        <td><span class="badge open">Abierto</span></td>
+                    </tr>
+                    <tr>
+                        <td>#101</td>
+                        <td>Intento de phishing</td>
+                        <td>20/06/2026</td>
+                        <td>Carlos Martínez</td>
+                        <td><span class="badge progress">En proceso</span></td>
+                    </tr>
+                    <tr>
+                        <td>#100</td>
+                        <td>Malware en estación de trabajo</td>
+                        <td>18/06/2026</td>
+                        <td>Laura Ramírez</td>
+                        <td><span class="badge resolved">Resuelto</span></td>
+                    </tr>
+                    <tr>
+                        <td>#099</td>
+                        <td>Fuga de información menor</td>
+                        <td>15/06/2026</td>
+                        <td>Laura Ramírez</td>
+                        <td><span class="badge resolved">Resuelto</span></td>
+                    </tr>
+                    <tr>
+                        <td>#098</td>
+                        <td>Configuración de firewall incorrecta</td>
+                        <td>10/06/2026</td>
+                        <td>Carlos Martínez</td>
+                        <td><span class="badge resolved">Resuelto</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <h3>Nuevo incidente</h3>
+
+        <div class="input-group">
+            <label>Tipo de incidente</label>
+            <select>
+                <option>Seleccionar...</option>
+                <option>Acceso no autorizado</option>
+                <option>Intento de phishing</option>
+                <option>Malware</option>
+                <option>Fuga de información</option>
+                <option>Otro</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Fecha</label>
+            <input type="date" value="2026-06-21">
+        </div>
+
+        <div class="input-group">
+            <label>Descripción</label>
+            <textarea rows="3" placeholder="Describe brevemente el incidente..."></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>Responsable</label>
+            <select>
+                <option>Seleccionar...</option>
+                <option>Carlos Martínez</option>
+                <option>Laura Ramírez</option>
+            </select>
+        </div>
+
+        <div class="modal-actions">
+            <button class="primary" id="saveIncident">Guardar</button>
+            <button class="secondary" id="cancelModal">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast">Incidente registrado correctamente</div>
+
+<script>
+const modalOverlay = document.getElementById('modalOverlay');
+const openModal = document.getElementById('openModal');
+const cancelModal = document.getElementById('cancelModal');
+const toast = document.getElementById('toast');
+
+function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+openModal.addEventListener('click', () => modalOverlay.classList.add('open'));
+cancelModal.addEventListener('click', () => modalOverlay.classList.remove('open'));
+modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) modalOverlay.classList.remove('open'); });
+
+document.getElementById('saveIncident').addEventListener('click', () => {
+    modalOverlay.classList.remove('open');
+    showToast('Incidente registrado correctamente');
+});
+
+if(new URLSearchParams(window.location.search).get('nuevo') === '1'){
+    modalOverlay.classList.add('open');
+}
+</script>
+
+</body>
+</html>

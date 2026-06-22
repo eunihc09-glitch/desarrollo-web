@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">CyberShield AI</div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span class="icon">&#9632;</span> Dashboard</a>
+            <a href="alertas.html"><span class="icon">&#9679;</span> Alertas</a>
+            <a href="incidentes.html"><span class="icon">&#9650;</span> Incidentes</a>
+            <a href="reportes.html" class="active"><span class="icon">&#8983;</span> Reportes</a>
+            <a href="#"><span class="icon">&#9881;</span> Configuración</a>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="avatar">CM</div>
+            <div>
+                <p>Carlos Martínez</p>
+                <span>Analista de seguridad</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <div>
+                <h1>Reportes</h1>
+                <p class="subtitle">Genera reportes ejecutivos listos para presentar</p>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell">&#128276;<span class="dot"></span></div>
+                <div class="avatar">CM</div>
+            </div>
+        </div>
+
+        <div class="report-controls">
+            <div class="input-group">
+                <label>Rango de fechas</label>
+                <input type="text" value="01/06/2026 – 21/06/2026" readonly>
+            </div>
+            <div class="input-group">
+                <label>Tipo de reporte</label>
+                <select>
+                    <option>Ejecutivo</option>
+                    <option>Técnico</option>
+                    <option>Cumplimiento</option>
+                </select>
+            </div>
+            <button class="btn" id="generateBtn" style="border:none; cursor:pointer;">Generar reporte PDF</button>
+        </div>
+
+        <div class="chart-row">
+            <div class="panel">
+                <h3>Incidentes por tipo</h3>
+                <svg viewBox="0 0 200 200" style="width:160px; height:160px; margin:auto; display:block;">
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#1c2c48" stroke-width="28"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#2ee6a6" stroke-width="28"
+                        stroke-dasharray="190 250" transform="rotate(-90 100 100)"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#f5b452" stroke-width="28"
+                        stroke-dasharray="100 250" stroke-dashoffset="-190" transform="rotate(-90 100 100)"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#5b8def" stroke-width="28"
+                        stroke-dasharray="150 250" stroke-dashoffset="-290" transform="rotate(-90 100 100)"/>
+                </svg>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot" style="background:#2ee6a6;"></span> Acceso no autorizado</div>
+                    <div class="legend-item"><span class="legend-dot" style="background:#f5b452;"></span> Malware</div>
+                    <div class="legend-item"><span class="legend-dot" style="background:#5b8def;"></span> Phishing</div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Alertas por semana</h3>
+                <div class="chart-placeholder" style="align-items:flex-end; gap:14px; padding:0 10px;">
+                    <svg viewBox="0 0 300 160" preserveAspectRatio="none" style="height:160px;">
+                        <rect x="10" y="90" width="34" height="70" fill="#2ee6a6" rx="4"/>
+                        <rect x="64" y="60" width="34" height="100" fill="#2ee6a6" rx="4"/>
+                        <rect x="118" y="40" width="34" height="120" fill="#2ee6a6" rx="4"/>
+                        <rect x="172" y="75" width="34" height="85" fill="#2ee6a6" rx="4"/>
+                        <rect x="226" y="20" width="34" height="140" fill="#2ee6a6" rx="4"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reportes generados anteriormente</th>
+                        <th>Fecha</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="reportTable">
+                    <tr>
+                        <td>Reporte_Ejecutivo_Junio2026.pdf</td>
+                        <td>21/06/2026</td>
+                        <td><a href="#" class="download-link">Descargar &darr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>Reporte_Tecnico_Mayo2026.pdf</td>
+                        <td>01/06/2026</td>
+                        <td><a href="#" class="download-link">Descargar &darr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>Reporte_Cumplimiento_Q2.pdf</td>
+                        <td>15/05/2026</td>
+                        <td><a href="#" class="download-link">Descargar &darr;</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<div class="toast" id="toast">Generando reporte...</div>
+
+<script>
+const toast = document.getElementById('toast');
+document.getElementById('generateBtn').addEventListener('click', () => {
+    toast.textContent = 'Generando reporte...';
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+
+        const tbody = document.getElementById('reportTable');
+        const row = document.createElement('tr');
+        row.innerHTML = '<td>Reporte_Ejecutivo_Junio2026_v2.pdf</td><td>Hoy</td><td><a href="#" class="download-link">Descargar &darr;</a></td>';
+        tbody.insertBefore(row, tbody.firstChild);
+
+        setTimeout(() => {
+            toast.textContent = 'Reporte generado correctamente';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2200);
+        }, 200);
+    }, 1400);
+});
+</script>
+
+</body>
+</html>
