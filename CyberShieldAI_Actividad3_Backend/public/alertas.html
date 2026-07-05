@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alertas | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page" data-protected="true">
+    <aside class="sidebar">
+        <div class="brand">CyberShield AI</div>
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="alertas.html">Alertas</a>
+        <a href="incidentes.html">Incidentes</a>
+        <a href="reportes.html">Reportes</a>
+        <a href="validacion.html">Validación</a>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </aside>
+    <main class="content">
+        <header class="page-header"><div><h1>Alertas</h1><p>Consulta alertas guardadas en SQLite mediante API del servidor.</p></div><input id="searchInput" placeholder="Buscar alerta..."></header>
+        <div class="chips"><button class="chip active" data-filter="todas">Todas</button><button class="chip" data-filter="alta">Alta</button><button class="chip" data-filter="media">Media</button><button class="chip" data-filter="baja">Baja</button></div>
+        <section class="table-card"><table><thead><tr><th>ID</th><th>Severidad</th><th>Descripción</th><th>Origen</th><th>Fecha</th><th>Estado</th></tr></thead><tbody id="alertTable"></tbody></table></section>
+    </main>
+    <div id="drawerOverlay" class="drawer-overlay"><aside class="drawer"><button id="drawerClose" class="close">×</button><span id="drawerBadge" class="badge"></span><h2 id="drawerDesc"></h2><p id="drawerOrigin"></p><p id="drawerRec"></p><div class="actions"><button id="markAttended" class="btn">Marcar atendida</button><button id="escalate" class="btn ghost">Escalar a incidente</button></div></aside></div>
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>

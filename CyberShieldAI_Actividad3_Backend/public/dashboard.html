@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page" data-protected="true">
+    <aside class="sidebar">
+        <div class="brand">CyberShield AI</div>
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="alertas.html">Alertas</a>
+        <a href="incidentes.html">Incidentes</a>
+        <a href="reportes.html">Reportes</a>
+        <a href="validacion.html">Validación</a>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </aside>
+    <main class="content">
+        <header class="topbar"><div><h1>Hola, <span id="userName">usuario</span></h1><p id="userRole">Resumen de seguridad</p></div><span class="avatar">CM</span></header>
+        <section class="metric-grid">
+            <article class="metric-card"><span>Nivel de seguridad</span><strong id="securityLevel">--</strong></article>
+            <article class="metric-card"><span>Alertas activas</span><strong id="activeAlerts">--</strong></article>
+            <article class="metric-card"><span>Incidentes abiertos</span><strong id="openIncidents">--</strong></article>
+            <article class="metric-card"><span>Dispositivos monitoreados</span><strong id="devices">--</strong></article>
+        </section>
+        <section class="panel-grid">
+            <article class="panel"><h2>Actividad de red en tiempo real</h2><div class="chart-line"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
+            <article class="panel"><h2>Alertas recientes</h2><div id="recentAlerts" class="list"></div><a href="alertas.html">Ver todas las alertas →</a></article>
+        </section>
+    </main>
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>

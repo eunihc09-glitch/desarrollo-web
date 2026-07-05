@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page" data-protected="true">
+    <aside class="sidebar">
+        <div class="brand">CyberShield AI</div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="alertas.html">Alertas</a>
+        <a href="incidentes.html">Incidentes</a>
+        <a href="reportes.html">Reportes</a>
+        <a class="active" href="validacion.html">Validación</a>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </aside>
+    <main class="content">
+        <header class="page-header"><div><h1>Validación del lado del servidor</h1><p>Registra en base de datos la validación funcional de los módulos.</p></div></header>
+        <section class="validation-grid"><form id="validationForm" class="panel form-grid"><h2>Formulario de validación</h2><label>Módulo a validar<select id="validationModule"><option value="">Seleccionar módulo...</option><option>Login con backend</option><option>Alertas desde API</option><option>Registro de incidentes</option><option>Generación de reportes</option><option>Persistencia en SQLite</option></select></label><button class="btn" type="submit">Realizar validación</button></form><article class="panel"><h2>Resultado</h2><p id="validationMessage" class="single-message">Pendiente: selecciona un módulo y presiona Realizar validación.</p></article></section>
+    </main>
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>

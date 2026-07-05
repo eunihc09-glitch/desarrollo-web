@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page" data-protected="true">
+    <aside class="sidebar">
+        <div class="brand">CyberShield AI</div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="alertas.html">Alertas</a>
+        <a href="incidentes.html">Incidentes</a>
+        <a class="active" href="reportes.html">Reportes</a>
+        <a href="validacion.html">Validación</a>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </aside>
+    <main class="content">
+        <header class="page-header"><div><h1>Reportes</h1><p>Genera reportes y consulta el historial guardado en SQLite.</p></div></header>
+        <section class="filters-card"><label>Rango de fechas<input id="dateRange" value="01/06/2026 - 21/06/2026"></label><label>Tipo de reporte<select id="reportType"><option>Ejecutivo</option><option>Técnico</option><option>Cumplimiento</option></select></label><button id="generateBtn" class="btn">Generar reporte</button></section>
+        <section class="panel-grid"><article class="panel"><h2>Incidentes por tipo</h2><div class="donut"></div><p>Acceso no autorizado · Malware · Phishing</p></article><article class="panel"><h2>Alertas por semana</h2><div class="bar-chart"><span></span><span></span><span></span><span></span><span></span></div></article></section>
+        <section class="table-card"><table><thead><tr><th>Reporte</th><th>Tipo</th><th>Rango</th><th>Fecha</th></tr></thead><tbody id="reportTable"></tbody></table></section>
+    </main>
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>

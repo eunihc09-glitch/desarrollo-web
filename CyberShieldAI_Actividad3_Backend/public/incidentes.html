@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incidentes | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page" data-protected="true">
+    <aside class="sidebar">
+        <div class="brand">CyberShield AI</div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="alertas.html">Alertas</a>
+        <a class="active" href="incidentes.html">Incidentes</a>
+        <a href="reportes.html">Reportes</a>
+        <a href="validacion.html">Validación</a>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </aside>
+    <main class="content">
+        <header class="page-header"><div><h1>Incidentes</h1><p>Registra y consulta incidentes persistidos en la base de datos.</p></div><button id="openModal" class="btn">+ Nuevo incidente</button></header>
+        <section class="table-card"><table><thead><tr><th>ID</th><th>Tipo</th><th>Fecha</th><th>Severidad</th><th>Responsable</th><th>Estado</th></tr></thead><tbody id="incidentTable"></tbody></table></section>
+    </main>
+    <div id="modalOverlay" class="modal-overlay"><form id="incidentForm" class="modal form-grid"><h2>Registro de incidente</h2><label>Tipo de incidente<select id="incidentType" required><option value="">Seleccionar...</option><option>Acceso no autorizado</option><option>Malware</option><option>Phishing</option><option>Fuga de información</option><option>Configuración incorrecta</option></select></label><label>Fecha<input id="incidentDate" type="date" required></label><label>Severidad<select id="incidentSeverity" required><option value="">Seleccionar...</option><option value="alta">Alta</option><option value="media">Media</option><option value="baja">Baja</option></select></label><label>Descripción<textarea id="incidentDesc" required placeholder="Describe brevemente el incidente..."></textarea></label><label>Responsable<select id="incidentOwner" required><option value="">Seleccionar...</option><option>Carlos Martínez</option><option>Laura Ramírez</option><option>Eunice Hernández Cruz</option></select></label><p class="error-message" id="incidentError"></p><div class="actions"><button class="btn" type="submit">Guardar</button><button class="btn ghost" id="cancelModal" type="button">Cancelar</button></div></form></div>
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>

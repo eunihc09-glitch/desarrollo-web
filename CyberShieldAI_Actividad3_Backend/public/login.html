@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso | CyberShield AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+    <main class="auth-card">
+        <h1>CyberShield AI</h1>
+        <p>Accede a tu centro de monitoreo de ciberseguridad.</p>
+        <form id="loginForm" class="form-grid">
+            <label>Correo electrónico<input id="emailInput" type="email" value="demo@cybershield.ai" required></label>
+            <label>Contraseña<input id="passwordInput" type="password" value="demo1234" required></label>
+            <div class="form-row"><label class="inline"><input type="checkbox" checked> Recordarme</label><a href="index.html">Volver al inicio</a></div>
+            <p class="error-message" id="loginError"></p>
+            <button class="btn full" type="submit">Iniciar sesión</button>
+        </form>
+        <p class="hint">Credenciales: demo@cybershield.ai / demo1234</p>
+    </main>
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>
