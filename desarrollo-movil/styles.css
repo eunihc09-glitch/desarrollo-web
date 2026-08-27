@@ -1,0 +1,130 @@
+
+:root {
+  --color-bg: #10141a;
+  --color-surface: #1a2029;
+  --color-border: #2a3140;
+  --color-text: #f2f5f0;
+  --color-text-muted: #8b93a3;
+  --color-accent: #c6ff5c;
+  --color-online: #6fe08a;
+  --color-offline: #ff5d5d;
+  --font-display: 'DejaVu Sans Mono', 'Courier New', monospace;
+  --font-body: 'DejaVu Sans', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.app {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-online);
+  flex-shrink: 0;
+}
+
+.status-dot.offline {
+  background-color: var(--color-offline);
+}
+
+/* Fecha */
+.date {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.clock {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 28px 32px;
+  width: 100%;
+}
+
+.time-part {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: bold;
+  min-width: 1.2em;
+}
+
+#seconds {
+  color: var(--color-accent);
+}
+
+.colon {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: bold;
+  color: var(--color-text-muted);
+  padding: 0 4px;
+}
+
+.hint {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.install-button {
+  background-color: var(--color-accent);
+  color: #0e1410;
+  border: none;
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-size: 14px;
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.install-button:active {
+  transform: scale(0.97);
+}
